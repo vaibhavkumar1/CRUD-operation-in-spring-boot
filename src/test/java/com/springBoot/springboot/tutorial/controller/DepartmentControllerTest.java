@@ -43,7 +43,7 @@ class DepartmentControllerTest {
                 .departmentId(1L)
                 .build();
 
-        Mockito.when(service.saveDepartment(inputDepartment)).thenReturn(department);
+//        Mockito.when(service.saveDepartment(inputDepartment)).thenReturn(department);
 
 //        mockMvc.perform(post("/departments")
 //                        .contentType(MediaType.APPLICATION_JSON)

@@ -4,7 +4,9 @@ import com.springBoot.springboot.tutorial.entity.Department;
 import com.springBoot.springboot.tutorial.error.DepartmentNotFoundException;
 import com.springBoot.springboot.tutorial.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,10 @@ public class DepartmentServiceImpl implements DepartmentService{
     }
 
     @Override
-    public List<Department> fetchDepartmentList() {
-        return repository.findAll();
+    public Page<Department> fetchDepartmentList(int pageNumber, int pageSize) {
+        Pageable firstPage= PageRequest.of(pageNumber,pageSize);
+        Page<Department> page=repository.findAll(firstPage);
+        return page;
     }
 
     @Override
